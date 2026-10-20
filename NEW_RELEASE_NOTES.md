@@ -37,3 +37,7 @@ appropriate header in [RELEASE_NOTES.md](./RELEASE_NOTES.md).
 - engine: Fix shadow normal bias instability with LiSPSM [⚠️ **New Material Version**]
 - engine: `Texture::setImage()` now rejects uploads of 2 GiB or more
 - java: `Engine.Config.asynchronousMode` is now passed to the native engine
+- engine: in `AsynchronousMode::AMORTIZATION`, queued async operations now run at the end of each
+  frame within a per-frame time budget, set by the new `Engine::Config::asynchronousFrameBudgetUs`
+  (2 ms by default), instead of 5 operations per backend tick. Metal now runs them every frame too
+- java: `Engine.Config.asynchronousFrameBudgetUs` is added
